@@ -5,6 +5,10 @@ on:
 
 name: Release
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   build:
     name: Create Release
