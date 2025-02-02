@@ -1,0 +1,61 @@
+﻿<Window x:Class="VrcOscLeash.UI.LeashEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VrcOscLeash"
+        xmlns:ui="clr-namespace:VrcOscLeash.UI"
+        xmlns:core="clr-namespace:VRCOSC.App.UI.Core;assembly=VRCOSC.App"
+        mc:Ignorable="d"
+        Background="{StaticResource CBackground2}"
+        MinWidth="600" MinHeight="600" Width="600" Height="768"
+        d:DataContext="{d:DesignInstance local:Leash}">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+        <Border Background="{StaticResource CBackground1}" Margin="10"
+                CornerRadius="5" VerticalAlignment="Top">
+
+            <core:SpacedStackPanel Spacing="10" Margin="10">
+                <core:TitleDescriptionContent Title="Name" Description="The name of the Leash">
+                    <TextBox Text="{Binding Name.Value, UpdateSourceTrigger=PropertyChanged}"
+                             Background="{StaticResource CBackground3}" Foreground="{StaticResource CForeground1}"
+                             FontSize="16" />
+                </core:TitleDescriptionContent>
+                <core:TitleDescriptionContent Title="Walking Deadzone"
+                                              Description="The minimum Stretch value of the Leash before you begin walking forwards.">
+                    <core:VRCOSCSlider Height="50" Value="{Binding WalkingDeadzone.Value}" MinValue="0.05" MaxValue="2" TickFrequency="0.05" SliderType="Float" ToStringFormat="0.00"/>
+                </core:TitleDescriptionContent>
+                <core:TitleDescriptionContent Title="Running Deadzone"
+                                              Description="The minimum Stretch value of the Leash before you begin running fowards. This should be close the the maximum you want you leash to stretch before it looks distorted. You can use the Run tab (represented by a Play icon) of the VRCOSC app to see the stretch values.">
+                    <core:VRCOSCSlider Height="50" Value="{Binding RunningDeadzone.Value}" MinValue="0.05" MaxValue="2" TickFrequency="0.05" SliderType="Float" ToStringFormat="0.00"/>
+                </core:TitleDescriptionContent>
+                <core:TitleDescriptionContent Title="Pull Multiplier"
+                                              Description="Multiplied by the Stretch value to determine how quickly you move forward. Should equal or greater 1 when the Leash is full stretched (e.g. the Running Deadzone is exceeded).">
+                    <core:VRCOSCSlider Height="50" Value="{Binding PullMultiplier.Value}" MinValue="0.05" MaxValue="2" TickFrequency="0.05" SliderType="Float" ToStringFormat="0.00"/>
+                </core:TitleDescriptionContent>
+                <core:TitleDescriptionContent Title="Turning Settings">
+                    <core:SpacedStackPanel>
+                        <core:TitleDescriptionContent Title="Enabled"
+                                                  Description="Whether or not to enable turning to face the end of the leash when the leash is pulled to the side.">
+
+                            <core:VRCOSCCheckBox IsChecked="{Binding TurningEnabled.Value}" Width="35" Height="35" />
+                        </core:TitleDescriptionContent>
+                        <core:TitleDescriptionContent Title="Turning Deadzone"
+                                                  Description="The minimum Stretch value of the Leash before you begin turning.">
+                            <core:VRCOSCSlider Height="50" Value="{Binding TurningDeadzone.Value}" MinValue="0.05" MaxValue="2" TickFrequency="0.05" SliderType="Float" ToStringFormat="0.00"/>
+                        </core:TitleDescriptionContent>
+                        <core:TitleDescriptionContent Title="Pull Multiplier"
+                                                  Description="Multiplied by the Stretch value to determine how quickly you turn.">
+                            <core:VRCOSCSlider Height="50" Value="{Binding TurningMultiplier.Value}" MinValue="0.05" MaxValue="2" TickFrequency="0.05" SliderType="Float" ToStringFormat="0.00"/>
+                        </core:TitleDescriptionContent>
+                        <core:TitleDescriptionContent Title="Turning Goal"
+                                                  Description="The minimum angle of the leash from the front before turning starts.">
+                            <core:VRCOSCSlider Height="50" Value="{Binding TurningGoal.Value}" MinValue="5" MaxValue="175" TickFrequency="5" SliderType="Float" />
+                        </core:TitleDescriptionContent>
+                    </core:SpacedStackPanel>
+                </core:TitleDescriptionContent>
+            </core:SpacedStackPanel>
+        </Border>
+
+    </ScrollViewer>
+</Window>

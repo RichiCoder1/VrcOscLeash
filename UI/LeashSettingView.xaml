@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="VrcOscLeash.UI.LeashSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VrcOscLeash"
+             xmlns:ui="clr-namespace:VrcOscLeash.UI"
+             xmlns:core="clr-namespace:VRCOSC.App.UI.Core;assembly=VRCOSC.App"
+             Loaded="ListingSettingView_Loaded"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="450"
+             d:DataContext="{d:DesignInstance local:OscLeashesSetting}">
+    <UserControl.Resources>
+        <core:AlternatingColourConverter x:Key="AlternatingColourConverter" Colour1="{StaticResource CBackground3}"
+                                         Colour2="{StaticResource CBackground4}" />
+    </UserControl.Resources>
+    <core:HeaderFooterListView AlternationCount="2" ItemsSource="{Binding Attribute}" ShouldTruncateHeight="False">
+        <core:HeaderFooterListView.Header>
+            <Border Grid.Row="0" Background="{StaticResource CBackground1}" Height="30">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Name"
+                               Foreground="{StaticResource CForeground2}" FontSize="16" TextAlignment="Center"
+                               VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="2" Text="Direction"
+                               Foreground="{StaticResource CForeground2}" FontSize="16" TextAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </core:HeaderFooterListView.Header>
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border
+                                Background="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(ItemsControl.AlternationIndex), Converter={StaticResource AlternatingColourConverter}}"
+                                d:DataContext="{d:DesignInstance local:Leash}">
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0"
+                                             Text="{Binding Name.Value, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="{StaticResource CBackground5}"
+                                             Foreground="{StaticResource CForeground1}" FontSize="16">
+                                    </TextBox>
+                                    <ComboBox Grid.Column="2"
+                                              SelectedValue="{Binding Direction.Value, UpdateSourceTrigger=PropertyChanged}"
+                                              ItemsSource="{Binding Source={x:Static ui:LeashSettingView.LeashDirectionValues}, Path=Value, Mode=OneTime}"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key" FontSize="16">
+                                    </ComboBox>
+                                    <core:SpacedStackPanel Grid.Column="4" Spacing="5" FlowDirection="RightToLeft"
+                                                           Orientation="Horizontal" Margin="5 0">
+                                        <core:IconButton ButtonColour="Red" Icon="Solid_Minus" Width="25" Height="25"
+                                                         Click="RemoveButton_OnClick">
+                                            <core:IconButton.Tag>
+                                                <Binding />
+                                            </core:IconButton.Tag>
+                                        </core:IconButton>
+                                        <core:IconButton ButtonColour="Blue" Icon="Solid_PenToSquare" Width="25"
+                                                         Height="25" Click="EditButton_OnClick">
+                                            <core:IconButton.Tag>
+                                                <Binding />
+                                            </core:IconButton.Tag>
+                                        </core:IconButton>
+                                    </core:SpacedStackPanel>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListView.ItemContainerStyle>
+        <core:HeaderFooterListView.Footer>
+            <Border Background="{StaticResource CBackground1}">
+                <core:IconButton
+                    ButtonColour="Green"
+                    Width="100"
+                    Height="20"
+                    Margin="0 5"
+                    Icon="Solid_Plus"
+                    Click="AddButton_OnClick">
+                </core:IconButton>
+            </Border>
+        </core:HeaderFooterListView.Footer>
+    </core:HeaderFooterListView>
+</UserControl>
