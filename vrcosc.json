@@ -1,4 +1,5 @@
 {
   "package_id": "dev.puplications.oscleash",
-  "display_name": "OSC Leash"
+  "display_name": "OSC Leash",
+  "cover_image_url": "https://richicoder1.github.io/VrcOscLeash//leash_icon_128x128.png"
 }
