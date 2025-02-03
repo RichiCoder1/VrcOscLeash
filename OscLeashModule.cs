@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 
 using VRCOSC.App.SDK.Modules;
 using VRCOSC.App.SDK.Parameters;
