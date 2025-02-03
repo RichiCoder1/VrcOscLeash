@@ -23,6 +23,6 @@ jobs:
       - run: dotnet restore
       - run: dotnet build --no-restore --configuration Release
 
-      - run: gh release create ${{ github.ref_name }} --generate-notes './artifacts/bin/VrcOscLeash/release/VrcOscLeash.dll#VrcOscLeash.dll'
+      - run: gh release create ${{ github.ref_name }} --generate-notes './artifacts/bin/VrcOscLeash/release/VrcOscLeash.dll#VrcOscLeash.dll' './Unity/OSCLeash.unitypackage#OSCLeash.unitypackage'
         env:
           GH_TOKEN: ${{ github.token }}
