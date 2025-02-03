@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
+          cache-dependency-path: site/pnpm-lock.yaml
 
       - run: pnpm install
       - run: pnpm build
@@ -35,6 +36,7 @@ jobs:
 
       
   deploy:
+    name: Pages Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
