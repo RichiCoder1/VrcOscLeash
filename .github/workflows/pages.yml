@@ -4,6 +4,7 @@ on:
       - main
     paths:
       - site/**
+      - .github/workflows/pages.yml
   
 jobs:
   build-pages:
