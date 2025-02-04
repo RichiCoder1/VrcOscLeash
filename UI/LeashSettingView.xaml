@@ -30,6 +30,7 @@
                     <TextBlock Grid.Column="2" Text="Direction"
                                Foreground="{StaticResource CForeground2}" FontSize="16" TextAlignment="Center"
                                VerticalAlignment="Center" />
+                    
                 </Grid>
             </Border>
         </core:HeaderFooterListView.Header>

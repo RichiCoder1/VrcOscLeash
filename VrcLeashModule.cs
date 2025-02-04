@@ -8,27 +8,27 @@ using VRCOSC.App.SDK.VRChat;
 
 namespace VrcOscLeash;
 
-[ModuleTitle("OSC Leash")]
-[ModuleDescription("Powers the OSC Leash Component")]
+[ModuleTitle("VRC Leash")]
+[ModuleDescription("Powers the VRC Leash Component")]
 [ModuleType(ModuleType.NSFW)]
-public class OscLeashModule : Module
+public class VrcLeashModule : Module
 {
     private readonly ConcurrentDictionary<string, LeashState> leashes = new();
 
     protected override void OnPreLoad()
     {
-        CreateCustomSetting(OscLeashSetting.Leashes, new OscLeashesSetting());
+        CreateCustomSetting(VrcLeashSetting.Leashes, new VrcLeashesSetting());
 
-        CreateGroup("Leashes", OscLeashSetting.Leashes);
+        CreateGroup("Leashes", VrcLeashSetting.Leashes);
 
-        RegisterParameter<bool>(OscLeashParameter.IsGrabbed, "OSCLeash/*/Leash_IsGrabbed", ParameterMode.Read, "IsGrabbed", "Whether or not the Leash is grabbed.");
-        RegisterParameter<float>(OscLeashParameter.Stretch, "OSCLeash/*/Leash_Stretch", ParameterMode.Read, "Stretch", "The current Stretch value of the Leash.");
-        RegisterParameter<float>(OscLeashParameter.XPos, "OSCLeash/*/X+", ParameterMode.Read, "XPos", "Current XPos Contact Value");
-        RegisterParameter<float>(OscLeashParameter.YPos, "OSCLeash/*/Y+", ParameterMode.Read, "YPos", "Current YPos Contact Value");
-        RegisterParameter<float>(OscLeashParameter.ZPos, "OSCLeash/*/Z+", ParameterMode.Read, "ZPos", "Current ZPos Contact Value");
-        RegisterParameter<float>(OscLeashParameter.XNeg, "OSCLeash/*/X-", ParameterMode.Read, "XNeg", "Current XNeg Contact Value");
-        RegisterParameter<float>(OscLeashParameter.YNeg, "OSCLeash/*/Y-", ParameterMode.Read, "YNeg", "Current YNeg Contact Value");
-        RegisterParameter<float>(OscLeashParameter.ZNeg, "OSCLeash/*/Z-", ParameterMode.Read, "ZNeg", "Current ZNeg Contact Value");
+        RegisterParameter<bool>(VrcLeashParameter.IsGrabbed, "VRCLeash/*/Leash_IsGrabbed", ParameterMode.Read, "IsGrabbed", "Whether or not the Leash is grabbed.");
+        RegisterParameter<float>(VrcLeashParameter.Stretch, "VRCLeash/*/Leash_Stretch", ParameterMode.Read, "Stretch", "The current Stretch value of the Leash.");
+        RegisterParameter<float>(VrcLeashParameter.XPos, "VRCLeash/*/X+", ParameterMode.Read, "XPos", "Current XPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YPos, "VRCLeash/*/Y+", ParameterMode.Read, "YPos", "Current YPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZPos, "VRCLeash/*/Z+", ParameterMode.Read, "ZPos", "Current ZPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.XNeg, "VRCLeash/*/X-", ParameterMode.Read, "XNeg", "Current XNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YNeg, "VRCLeash/*/Y-", ParameterMode.Read, "YNeg", "Current YNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZNeg, "VRCLeash/*/Z-", ParameterMode.Read, "ZNeg", "Current ZNeg Contact Value");
     }
 
     protected override void OnAvatarChange(AvatarConfig? avatarConfig)
@@ -44,8 +44,8 @@ public class OscLeashModule : Module
         var uniqueLeashes = avatarConfig.Parameters
             .Where(param => param.Output?.Address is not null)
             .Select(param => param.Output!.Address)
-            .Where(address => address.StartsWith("/avatar/parameters/OSCLeash"))
-            .Select(param => param.Replace("/avatar/parameters/OSCLeash/", "").Split("/").First())
+            .Where(address => address.StartsWith("/avatar/parameters/VRCLeash"))
+            .Select(param => param.Replace("/avatar/parameters/VRCLeash/", "").Split("/").First())
             .Distinct().ToList();
 
         foreach (var leash in uniqueLeashes)
@@ -60,7 +60,7 @@ public class OscLeashModule : Module
 
         if (!string.IsNullOrWhiteSpace(leashName))
         {
-            leashes.AddOrUpdate(leashName, new LeashState(leashName), (_, leash) => leash.WithParameter((OscLeashParameter)parameter.Lookup, parameter.Value));
+            leashes.AddOrUpdate(leashName, new LeashState(leashName), (_, leash) => leash.WithParameter((VrcLeashParameter)parameter.Lookup, parameter.Value));
         }
         CalculateUpdate();
     }
@@ -82,7 +82,7 @@ public class OscLeashModule : Module
 
     private void CalculateMovementUpdate(LeashState leash)
     {
-        var leashesSettings = GetSettingValue<OscLeashesSetting>(OscLeashSetting.Leashes);
+        var leashesSettings = GetSettingValue<VrcLeashesSetting>(VrcLeashSetting.Leashes);
         var settings = leashesSettings.Attribute.First(l => l.Name.Value == leash.Name);
 
         if (settings == default)
@@ -216,12 +216,12 @@ public class OscLeashModule : Module
         }
     }
 
-    private enum OscLeashSetting
+    private enum VrcLeashSetting
     {
         Leashes,
     }
 
-    internal enum OscLeashParameter
+    internal enum VrcLeashParameter
     {
         IsGrabbed,
         Stretch,

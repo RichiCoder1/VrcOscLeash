@@ -7,9 +7,9 @@ using VrcOscLeash.UI;
 
 namespace VrcOscLeash;
 
-public class OscLeashesSetting : ListModuleSetting<Leash>
+public class VrcLeashesSetting : ListModuleSetting<Leash>
 {
-    public OscLeashesSetting()
+    public VrcLeashesSetting()
         : base("Leashes", "Create, edit, and delete Leashes", typeof(LeashSettingView), [])
     {
     }
@@ -43,4 +43,6 @@ public record Leash
     public Observable<float> TurningMultiplier { get; init; } = new(1.0f);
 
     public Observable<float> TurningGoal { get; init; } = new(90.0f);
+
+    public Observable<bool> LegacyEnabled { get; init; } = new(false);
 }

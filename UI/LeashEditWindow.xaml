@@ -54,6 +54,12 @@
                         </core:TitleDescriptionContent>
                     </core:SpacedStackPanel>
                 </core:TitleDescriptionContent>
+
+                <core:TitleDescriptionContent Title="Legacy Leash"
+                                                  Description="Whether or not to enable compatibility with legacy OSCLeash setup and not the component.">
+
+                    <core:VRCOSCCheckBox IsChecked="{Binding LegacyEnabled.Value}" Width="35" Height="35" />
+                </core:TitleDescriptionContent>
             </core:SpacedStackPanel>
         </Border>
 

@@ -7,7 +7,7 @@ namespace VrcOscLeash.UI;
 public partial class LeashEditWindow : IManagedWindow
 {
 
-    public LeashEditWindow(OscLeashModule _, Leash leash)
+    public LeashEditWindow(VrcLeashModule _, Leash leash)
     {
         InitializeComponent();
         DataContext = leash;

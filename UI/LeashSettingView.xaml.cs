@@ -11,12 +11,12 @@ namespace VrcOscLeash.UI;
 /// </summary>
 public partial class LeashSettingView : UserControl
 {
-    private readonly OscLeashesSetting oscLeashSetting;
-    private readonly OscLeashModule module;
+    private readonly VrcLeashesSetting oscLeashSetting;
+    private readonly VrcLeashModule module;
     private WindowManager windowManager = null!;
 
 
-    public LeashSettingView(OscLeashModule module, OscLeashesSetting oscLeashSetting)
+    public LeashSettingView(VrcLeashModule module, VrcLeashesSetting oscLeashSetting)
     {
         this.oscLeashSetting = oscLeashSetting;
         this.module = module;
