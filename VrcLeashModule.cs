@@ -1,13 +1,12 @@
 ﻿using System.Collections.Concurrent;
-using System.Reflection;
 
 using VRCOSC.App.SDK.Modules;
 using VRCOSC.App.SDK.Parameters;
 using VRCOSC.App.SDK.VRChat;
 
 [assembly: System.Runtime.Versioning.SupportedOSPlatform("windows")]
-[assembly: AssemblyTitle("VrcLeash")]
-[assembly: AssemblyDescription("VrcLeash VRCOSC Module")]
+[assembly: System.Reflection.AssemblyTitle("VrcLeash")]
+[assembly: System.Reflection.AssemblyDescription("VrcLeash VRCOSC Module")]
 
 namespace VrcOscLeash;
 
