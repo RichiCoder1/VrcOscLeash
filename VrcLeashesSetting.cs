@@ -22,7 +22,7 @@ public record Leash
 {
     public string Id { get; init; } = Guid.NewGuid().ToString();
 
-    public Observable<string> Name { get; init; } = new();
+    public Observable<string> Name { get; init; } = new(string.Empty);
 
     public Observable<LeashDirection> Direction { get; init; } = new(LeashDirection.North);
 
