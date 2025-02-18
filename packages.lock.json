@@ -1,12 +1,12 @@
 {
   "version": 1,
   "dependencies": {
-    "net8.0-windows10.0.22621": {
+    "net8.0-windows10.0.26100": {
       "VolcanicArts.VRCOSC.SDK": {
         "type": "Direct",
-        "requested": "[2024.1223.0, )",
-        "resolved": "2024.1223.0",
-        "contentHash": "ceDZnnH2NwDiauyBjOgQ26tKvUZYJCpM8STwv/0sro6eP22EDjC858PgzDxxTA2zeZumG9VqJl7WCH9xjIQGBw==",
+        "requested": "[2025.212.0, )",
+        "resolved": "2025.212.0",
+        "contentHash": "rRU6HXp7GabDWjiFLqxRMicvJS9cXGGjpQXbibWOU2MJtrWUefpVlpO09eycaZ1CpHGExdkMSLGMawc3GNDYrA==",
         "dependencies": {
           "Extended.Wpf.Toolkit": "4.6.1",
           "FontAwesome6.Fonts": "2.5.1",
@@ -16,16 +16,16 @@
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.135",
           "NAudio.Wasapi": "2.2.1",
           "Newtonsoft.Json": "13.0.3",
-          "Octokit": "13.0.1",
-          "PInvoke.User32": "0.7.124",
+          "Octokit": "14.0.0",
           "Semver": "3.0.0",
-          "VRChat.API": "1.18.8",
-          "Velopack": "0.0.1015",
+          "Velopack": "0.0.1053",
+          "VolcanicArts.FastOSC": "1.1.1",
           "VolcanicArts.Libs.OpenVR": "2.5.1",
-          "Whisper.net": "1.7.3",
-          "Whisper.net.Runtime": "1.7.3",
-          "Whisper.net.Runtime.Vulkan": "1.7.3",
-          "WindowsInput": "6.4.1"
+          "Whisper.net": "1.7.4",
+          "Whisper.net.Runtime": "1.7.4",
+          "Whisper.net.Runtime.Vulkan": "1.7.4",
+          "WindowsInput": "6.4.1",
+          "WpfAnimatedGif": "2.0.2"
         }
       },
       "Extended.Wpf.Toolkit": {
@@ -42,14 +42,6 @@
         "type": "Transitive",
         "resolved": "2.1.0",
         "contentHash": "UTdxWvbgp2xzT1Ajaa2va+Qi3oNHJPasYmVhbKI2VVdu1VYP6yUG+RikhsHvpD7iM0S8e8UYb5Qm/LTWxx9QAA=="
-      },
-      "JsonSubTypes": {
-        "type": "Transitive",
-        "resolved": "1.9.0",
-        "contentHash": "b7BHm3Oo5mqcIUWogcUsjOya9PmkNyLmwWtRfeCHwgGGXMGEFiz95ZxqfZQPXqxJRFr+2IxoiIcDv10tWUmvTQ==",
-        "dependencies": {
-          "Newtonsoft.Json": "10.0.1"
-        }
       },
       "LibreHardwareMonitorLib": {
         "type": "Transitive",
@@ -141,54 +133,8 @@
       },
       "Octokit": {
         "type": "Transitive",
-        "resolved": "13.0.1",
-        "contentHash": "tjXTa2FXzbd3n17VWpi8UXe05EIJqHcWJW8C2kukftIve00duWiZL8x4i1vlZQ0zQ4RbRANbRc7J5K7Co/1spQ=="
-      },
-      "PInvoke.Kernel32": {
-        "type": "Transitive",
-        "resolved": "0.7.124",
-        "contentHash": "3yQudp7J20HH8oW2WsGdNlcRCJAG6Slens3n4P7c6m53m0SkXLyD5ry/bXYAFXYeIym9b0LIOvrmKjmzptmkWw==",
-        "dependencies": {
-          "PInvoke.Windows.Core": "0.7.124",
-          "System.Threading.Tasks.Extensions": "4.5.4"
-        }
-      },
-      "PInvoke.User32": {
-        "type": "Transitive",
-        "resolved": "0.7.124",
-        "contentHash": "Xgrt/IFJWZhLT0S0MdP4ZU48gqgKVs+O+WmXb9Qge1T+me3oR5fhOl812qvLm2+D6DoHPxbUWTIc8MrH5i78Vw==",
-        "dependencies": {
-          "PInvoke.Kernel32": "0.7.124",
-          "PInvoke.Windows.Core": "0.7.124",
-          "PInvoke.Windows.ShellScalingApi": "0.7.124",
-          "Validation": "2.4.15"
-        }
-      },
-      "PInvoke.Windows.Core": {
-        "type": "Transitive",
-        "resolved": "0.7.124",
-        "contentHash": "er/PkwUBie3nXlwiKOfOxmdAj6ae8eFCLUgI5g6+9RAbyMoXMQnwAPx1atq0ZxU2LeozBdWtMQjogqcMNJhg1w==",
-        "dependencies": {
-          "System.Memory": "4.5.4"
-        }
-      },
-      "PInvoke.Windows.ShellScalingApi": {
-        "type": "Transitive",
-        "resolved": "0.7.124",
-        "contentHash": "mVKSSuvBcJUwWvfGAfJK05AXH0QEbiDdxYqN4wjCZBeXv4ewM2/N6U2wt5uCac8RFIvsd9MAsIdTnjMLqdkNZg==",
-        "dependencies": {
-          "PInvoke.Windows.Core": "0.7.124"
-        }
-      },
-      "Polly": {
-        "type": "Transitive",
-        "resolved": "7.2.3",
-        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ=="
-      },
-      "RestSharp": {
-        "type": "Transitive",
-        "resolved": "108.0.2",
-        "contentHash": "zI1lzI+Jjzl6bcicyUYfLIGmmOAdJRkYepMnSPzrxd1o9RxztPaR/blUOmY8BpXdN3I+XlK9dtwCYRGCxvaODw=="
+        "resolved": "14.0.0",
+        "contentHash": "jGOuTH1l+TCpJH+fwYOp7USzHDuGfN1jKbLz3J2COwyn+wL08eynvpnM6rY2qkzIEXum3PN2p2QkP3BW/p9Qcw=="
       },
       "runtime.android-arm.runtime.native.System.IO.Ports": {
         "type": "Transitive",
@@ -306,11 +252,6 @@
         "resolved": "9.0.0",
         "contentHash": "oTE5IfuMoET8yaZP/vdvy9xO47guAv/rOhe4DODuFBN3ySprcQOlXqO3j+e/H/YpKKR5sglrxRaZ2HYOhNJrqA=="
       },
-      "System.ComponentModel.Annotations": {
-        "type": "Transitive",
-        "resolved": "5.0.0",
-        "contentHash": "dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg=="
-      },
       "System.IO.FileSystem.AccessControl": {
         "type": "Transitive",
         "resolved": "5.0.0",
@@ -336,11 +277,6 @@
           "System.CodeDom": "9.0.0"
         }
       },
-      "System.Memory": {
-        "type": "Transitive",
-        "resolved": "4.5.4",
-        "contentHash": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw=="
-      },
       "System.Security.AccessControl": {
         "type": "Transitive",
         "resolved": "5.0.0",
@@ -355,61 +291,49 @@
         "resolved": "5.0.0",
         "contentHash": "t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA=="
       },
-      "System.Threading.Tasks.Extensions": {
-        "type": "Transitive",
-        "resolved": "4.5.4",
-        "contentHash": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg=="
-      },
-      "Validation": {
-        "type": "Transitive",
-        "resolved": "2.4.15",
-        "contentHash": "KQFOtJKKhaXzuSiZhkFaFzQEdYsA+EN/XqKZDYwsGDOrS0Nxu6qzCvNTsDF4xtkiZbBA6u7I59QnsuP2O2fZgg=="
-      },
       "Velopack": {
         "type": "Transitive",
-        "resolved": "0.0.1015",
-        "contentHash": "j+6sQfhJQOu/x3Rm4hSboDKdcrOdXFF7dNToz4bx1knUge3zCHJciDf4JUuTJHidzPTM//9IHCCAnDFbuMBfGA==",
+        "resolved": "0.0.1053",
+        "contentHash": "hbSFBfwAAEg5GGKkocDPiyYA+FxyrkXo2pJJCcrgOv1xnSupINpYXk2l9M/M7LEjKiH42pq+NmcG/+CwQvTbvA==",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
           "NuGet.Versioning": "6.12.1"
         }
+      },
+      "VolcanicArts.FastOSC": {
+        "type": "Transitive",
+        "resolved": "1.1.1",
+        "contentHash": "GvHCYsDM7eSjfPP5Q4DyURgSlqo7awYdAClrYZQVzLVKfNSkDHFbXisFcLKd/B2Bk0DQHn3OBviA8cjOPtGQZQ=="
       },
       "VolcanicArts.Libs.OpenVR": {
         "type": "Transitive",
         "resolved": "2.5.1",
         "contentHash": "bU0xDCwi/Xvh0/pgZ49ZtTiiURMSUzmVPlvcryUlNUIBujozpXeIr74k4lLGG1qqgBjLL9JPeq+0ptK6/cg4ZQ=="
       },
-      "VRChat.API": {
-        "type": "Transitive",
-        "resolved": "1.18.8",
-        "contentHash": "MxX0gC6xbmKRu45WStyIeRXdtkzt/FUdP7aM09QxyFT8WYmL6Um108xnDMAA7V2CUbidCyE2inik7Eh8fbTTyA==",
-        "dependencies": {
-          "JsonSubTypes": "1.9.0",
-          "Newtonsoft.Json": "13.0.1",
-          "Polly": "7.2.3",
-          "RestSharp": "108.0.2",
-          "System.ComponentModel.Annotations": "5.0.0"
-        }
-      },
       "Whisper.net": {
         "type": "Transitive",
-        "resolved": "1.7.3",
-        "contentHash": "j1ilge0R/hI4yFB7uc5mS9rnu+9ooVCtR9LEdvOe8YwlZ0196ER9QODj8P2SpyNSIj0PLXFHH603QbUnqZ8DPQ=="
+        "resolved": "1.7.4",
+        "contentHash": "n7xwgp2xgERW7T2kE1dfXJDQm6SyXamNW50hcZOdtagnb0ZH8X95VHeVjawC1cRiJfPYqkgeVkBQAoplMCXmOw=="
       },
       "Whisper.net.Runtime": {
         "type": "Transitive",
-        "resolved": "1.7.3",
-        "contentHash": "iQ1ynOcxFks0idM8zNd4OSX2dhy5N1EVCFau/A3mU0HnaENYGy6HGdt186Dx9C2m/I+365Xur6g+AnPT6xqe3g=="
+        "resolved": "1.7.4",
+        "contentHash": "tYO4M8ER68qF8Z4E68aTAkrr9cQkfanr6JVaejpTC9zWTJoHYkImYBXRC2YlJEz4QN20iSgq/yz33ZQYCZv5Ng=="
       },
       "Whisper.net.Runtime.Vulkan": {
         "type": "Transitive",
-        "resolved": "1.7.3",
-        "contentHash": "9UgQcnyGgiROYvdtFo7b+01pV79ZhzsVWmVehSMbO8IUkoV6Jsc8D6UCIPWpNBuYq7Vu0xdZiXwNTmBtZ8/Tyw=="
+        "resolved": "1.7.4",
+        "contentHash": "qchWn/wgyx0hF7KqF0Dx+m1ncmvcTvbVPbNN0+htDEK98belOuBbBgYqQZkAsZPTqljIAJ+8TO11ZhUR3Crykg=="
       },
       "WindowsInput": {
         "type": "Transitive",
         "resolved": "6.4.1",
         "contentHash": "wfg9uu5xDvBcaNqvR1ZTFQqBf4bKzkxdd5WviTZPy4cAywEzLzofuYswZB3nGIEnnlwGLBGSgrNOEZH/w8JI9w=="
+      },
+      "WpfAnimatedGif": {
+        "type": "Transitive",
+        "resolved": "2.0.2",
+        "contentHash": "B0j9SqtThyHVTiOPvu6yR+39Te0g3o+7Jjb+qEm7+Iz1HRqbE5/4QV+ntHWOYYBPOUFr9x1mdzGl/EzWP+nKiA=="
       }
     }
   }

@@ -22,27 +22,27 @@ public record Leash
 {
     public string Id { get; init; } = Guid.NewGuid().ToString();
 
-    public Observable<string> Name { get; init; } = new(string.Empty);
+    public Observable<string> Name { get; set; } = new("Leash");
 
-    public Observable<LeashDirection> Direction { get; init; } = new(LeashDirection.North);
+    public Observable<LeashDirection> Direction { get; set; } = new(LeashDirection.North);
 
-    public Observable<float> WalkingDeadzone { get; init; } = new(0.15f);
+    public Observable<float> WalkingDeadzone { get; set; } = new(0.15f);
 
-    public Observable<float> RunningDeadzone { get; init; } = new(0.70f);
+    public Observable<float> RunningDeadzone { get; set; } = new(0.70f);
 
-    public Observable<float> UpDownDeadzone { get; init; } = new(0.5f);
+    public Observable<float> UpDownDeadzone { get; set; } = new(0.5f);
 
-    public Observable<float> UpDownCompensation { get; init; } = new(1.0f);
+    public Observable<float> UpDownCompensation { get; set; } = new(1.0f);
 
-    public Observable<float> PullMultiplier { get; init; } = new(1.2f);
+    public Observable<float> PullMultiplier { get; set; } = new(1.2f);
 
-    public Observable<bool> TurningEnabled { get; init; } = new(false);
+    public Observable<bool> TurningEnabled { get; set; } = new(false);
 
-    public Observable<float> TurningDeadzone { get; init; } = new(0.15f);
+    public Observable<float> TurningDeadzone { get; set; } = new(0.15f);
 
-    public Observable<float> TurningMultiplier { get; init; } = new(1.0f);
+    public Observable<float> TurningMultiplier { get; set; } = new(1.0f);
 
-    public Observable<float> TurningGoal { get; init; } = new(90.0f);
+    public Observable<float> TurningGoal { get; set; } = new(90.0f);
 
-    public Observable<bool> LegacyEnabled { get; init; } = new(false);
+    public Observable<bool> LegacyEnabled { get; set; } = new(false);
 }

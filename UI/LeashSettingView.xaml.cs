@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using VRChat.API.Model;
-
 using VRCOSC.App.UI.Core;
 
 namespace VrcOscLeash.UI;

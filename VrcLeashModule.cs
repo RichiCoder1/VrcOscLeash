@@ -23,14 +23,24 @@ public class VrcLeashModule : Module
 
         CreateGroup("Leashes", VrcLeashSetting.Leashes);
 
-        RegisterParameter<bool>(VrcLeashParameter.IsGrabbed, "VRCLeash/*/Leash_IsGrabbed", ParameterMode.Read, "IsGrabbed", "Whether or not the Leash is grabbed.");
-        RegisterParameter<float>(VrcLeashParameter.Stretch, "VRCLeash/*/Leash_Stretch", ParameterMode.Read, "Stretch", "The current Stretch value of the Leash.");
-        RegisterParameter<float>(VrcLeashParameter.XPos, "VRCLeash/*/X+", ParameterMode.Read, "XPos", "Current XPos Contact Value");
-        RegisterParameter<float>(VrcLeashParameter.YPos, "VRCLeash/*/Y+", ParameterMode.Read, "YPos", "Current YPos Contact Value");
-        RegisterParameter<float>(VrcLeashParameter.ZPos, "VRCLeash/*/Z+", ParameterMode.Read, "ZPos", "Current ZPos Contact Value");
-        RegisterParameter<float>(VrcLeashParameter.XNeg, "VRCLeash/*/X-", ParameterMode.Read, "XNeg", "Current XNeg Contact Value");
-        RegisterParameter<float>(VrcLeashParameter.YNeg, "VRCLeash/*/Y-", ParameterMode.Read, "YNeg", "Current YNeg Contact Value");
-        RegisterParameter<float>(VrcLeashParameter.ZNeg, "VRCLeash/*/Z-", ParameterMode.Read, "ZNeg", "Current ZNeg Contact Value");
+        RegisterParameter<bool>(VrcLeashParameter.IsGrabbed, "VrcLeash/*/Leash_IsGrabbed", ParameterMode.Read, "IsGrabbed", "Whether or not the Leash is grabbed.");
+        RegisterParameter<float>(VrcLeashParameter.Stretch, "VrcLeash/*/Leash_Stretch", ParameterMode.Read, "Stretch", "The current Stretch value of the Leash.");
+        RegisterParameter<float>(VrcLeashParameter.XPos, "VrcLeash/*/XPos", ParameterMode.Read, "XPos", "Current XPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YPos, "VrcLeash/*/YPos", ParameterMode.Read, "YPos", "Current YPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZPos, "VrcLeash/*/ZPos", ParameterMode.Read, "ZPos", "Current ZPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.XNeg, "VrcLeash/*/XNeg", ParameterMode.Read, "XNeg", "Current XNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YNeg, "VrcLeash/*/YNeg", ParameterMode.Read, "YNeg", "Current YNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZNeg, "VrcLeash/*/ZNeg", ParameterMode.Read, "ZNeg", "Current ZNeg Contact Value");
+
+
+        RegisterParameter<bool>(VrcLeashParameter.IsGrabbed_Legacy, "Leas*_IsGrabbed", ParameterMode.Read, "IsGrabbed (OSCLeash)", "Whether or not the Leash is grabbed.");
+        RegisterParameter<float>(VrcLeashParameter.Stretch_Legacy, "Leas*_Stretch", ParameterMode.Read, "Stretch (OSCLeash)", "The current Stretch value of the Leash.");
+        RegisterParameter<float>(VrcLeashParameter.XPos_Legacy, "Leas*_X+", ParameterMode.Read, "XPos (OSCLeash)", "Current XPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YPos_Legacy, "Leas*_Y+", ParameterMode.Read, "YPos (OSCLeash)", "Current YPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZPos_Legacy, "Leas*_Z+", ParameterMode.Read, "ZPos (OSCLeash)", "Current ZPos Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.XNeg_Legacy, "Leas*_X-", ParameterMode.Read, "XNeg (OSCLeash)", "Current XNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.YNeg_Legacy, "Leas*_Y-", ParameterMode.Read, "YNeg (OSCLeash)", "Current YNeg Contact Value");
+        RegisterParameter<float>(VrcLeashParameter.ZNeg_Legacy, "Leas*_Z-", ParameterMode.Read, "ZNeg (OSCLeash)", "Current ZNeg Contact Value");
     }
 
     protected override void OnAvatarChange(AvatarConfig? avatarConfig)
@@ -45,9 +55,9 @@ public class VrcLeashModule : Module
 
         var uniqueLeashes = avatarConfig.Parameters
             .Where(param => param.Output?.Address is not null)
-            .Select(param => param.Output!.Address)
-            .Where(address => address.StartsWith("/avatar/parameters/VRCLeash"))
-            .Select(param => param.Replace("/avatar/parameters/VRCLeash/", "").Split("/").First())
+            .Select(param => param.Output!.Address!)
+            .Where(address => address.StartsWith("/avatar/parameters/VrcLeash"))
+            .Select(param => param.Replace("/avatar/parameters/VrcLeash/", "").Split("/").First())
             .Distinct().ToList();
 
         foreach (var leash in uniqueLeashes)
@@ -62,6 +72,10 @@ public class VrcLeashModule : Module
 
         if (!string.IsNullOrWhiteSpace(leashName))
         {
+            if (((VrcLeashParameter)parameter.Lookup) >= VrcLeashParameter.IsGrabbed_Legacy)
+            {
+                leashName = $"Leas{leashName}";
+            }
             leashes.AddOrUpdate(leashName, new LeashState(leashName), (_, leash) => leash.WithParameter((VrcLeashParameter)parameter.Lookup, parameter.Value));
         }
         CalculateUpdate();
@@ -84,8 +98,8 @@ public class VrcLeashModule : Module
 
     private void CalculateMovementUpdate(LeashState leash)
     {
-        var leashesSettings = GetSettingValue<VrcLeashesSetting>(VrcLeashSetting.Leashes);
-        var settings = leashesSettings.Attribute.First(l => l.Name.Value == leash.Name);
+        var leashesSettings = GetSettingValue<List<Leash>>(VrcLeashSetting.Leashes);
+        var settings = leashesSettings.First(l => l.Name.Value == leash.Name);
 
         if (settings == default)
         {
@@ -233,5 +247,13 @@ public class VrcLeashModule : Module
         XNeg,
         YNeg,
         ZNeg,
+        IsGrabbed_Legacy,
+        Stretch_Legacy,
+        XPos_Legacy,
+        YPos_Legacy,
+        ZPos_Legacy,
+        XNeg_Legacy,
+        YNeg_Legacy,
+        ZNeg_Legacy,
     }
 }
